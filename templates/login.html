@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login | CropReco</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="m-0 p-0 min-h-screen flex items-center justify-center relative overflow-hidden">
+
+  <!-- Background Image -->
+  <img
+    src="https://storage.googleapis.com/a1aa/image/c6b87e4f-b523-407f-b841-f54282b04da1.jpg"
+    alt="Background"
+    class="fixed inset-0 w-full h-full object-cover -z-20"
+  />
+
+  <!-- Login Form -->
+  <div class="bg-[#e3f6f5]/60 backdrop-blur-md rounded-[14px] shadow-[0_10px_25px_rgba(0,0,0,0.1)] p-8 w-[320px] relative z-10">
+    <h2 class="text-center mb-5 text-[#02475e] text-xl font-semibold">Login to CropReco</h2>
+
+    {% if message %}
+      <div id="message" class="text-center text-red-600 mb-2 text-sm">
+        {{ message }}
+      </div>
+    {% endif %}
+
+    <form method="POST" class="space-y-4">
+      <div>
+        <label for="identifier" class="block mb-1 text-sm text-gray-800 font-normal">Email or Phone</label>
+        <input
+          type="text"
+          id="identifier"
+          name="identifier"
+          required
+          class="w-full px-3 py-2 border border-[#b2dfdb] rounded-lg text-sm bg-white bg-opacity-70 focus:outline-none focus:border-[#00bfa5] focus:shadow-[0_0_5px_rgba(0,191,165,0.2)]"
+          placeholder="you@gmail.com or 9876543210"
+        />
+      </div>
+      <div>
+        <label for="password" class="block mb-1 text-sm text-gray-800 font-normal">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          required
+          class="w-full px-3 py-2 border border-[#b2dfdb] rounded-lg text-sm bg-white bg-opacity-70 focus:outline-none focus:border-[#00bfa5] focus:shadow-[0_0_5px_rgba(0,191,165,0.2)]"
+        />
+      </div>
+      <button
+        type="submit"
+        class="w-full py-2 bg-[#00796b] text-white font-bold rounded-lg text-sm hover:bg-[#00695c] transition-colors"
+      >
+        Login
+      </button>
+    </form>
+
+    <div class="mt-4 text-center text-xs text-gray-700">
+      <p><a href="/forgot-password" class="text-[#0077cc] hover:underline">Forgot Password?</a></p>
+      <p>
+        Don't have an account?
+        <a href="/signup" class="text-[#0077cc] hover:underline">Sign up</a>
+      </p>
+    </div>
+  </div>
+
+</body>
+</html>
