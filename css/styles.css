@@ -261,6 +261,9 @@ body.page-crop-form { background-image: url('/static/images/crop.jpg'); }
 body.page-soil-health { background-image: url('/static/images/hero.jpg'); }
 body.page-weather-prediction { background-image: url('/static/images/home.jpg'); }
 body.page-pest-disease { background-image: url('/static/images/hero.jpg'); }
+body.page-login { background-image: url('/static/images/hero.jpg'); }
+body.page-signup { background-image: url('/static/images/hero.jpg'); }
+body.page-forgot-password { background-image: url('/static/images/hero.jpg'); }
 
 
 .form-page .header {
