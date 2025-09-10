@@ -1,7 +1,47 @@
-{% extends 'home.html' %}
+{% extends 'base.html' %}
+
+{% block title %}Soil Health Analysis{% endblock %}
+{% block background_image %}'/static/images/hero.jpg'{% endblock %}
+
+{% block header_icon %}<i class="bi bi-heart-pulse me-2"></i>{% endblock %}
+{% block header_title %}Soil Health Analysis{% endblock %}
+
 {% block content %}
-<section class="features">
-  <h2>Soil Health Analysis</h2>
-  <p>This feature evaluates the fertility and condition of the soil to ensure optimal crop growth and long-term sustainability.</p>
+<h5 class="text-center mb-4 d-flex justify-content-center align-items-center gap-2" style="color:#0f5132;">
+    <i class="fas fa-vials"></i> Enter Soil Details
+</h5>
+<form method="POST" novalidate>
+    <div class="form-group"><i class="fas fa-flask"></i><input name="N" type="number" class="form-control" placeholder="Nitrogen (kg/ha)" required></div>
+    <div class="form-group"><i class="fas fa-tint"></i><input name="P" type="number" class="form-control" placeholder="Phosphorus (kg/ha)" required></div>
+    <div class="form-group"><i class="fas fa-leaf"></i><input name="K" type="number" class="form-control" placeholder="Potassium (kg/ha)" required></div>
+    <div class="form-group"><i class="fas fa-water"></i><input name="ph" type="number" step="any" class="form-control" placeholder="pH" required></div>
+    <div class="form-group"><i class="fas fa-seedling"></i><input name="organic_matter" type="number" step="any" class="form-control" placeholder="Organic Matter (%)" required></div>
+
+    <button type="submit" class="btn btn-success w-100">
+        <i class="bi bi-bar-chart-line me-2"></i>Analyze Soil
+    </button>
+</form>
+
+{% if result %}
+<section class="result-box mt-4">
+    <div class="result-text">
+        <h5>Soil Analysis Result</h5>
+        <p><strong>Overall Health:</strong> {{ result.health }}</p>
+        <p><strong>Recommendations:</strong></p>
+        <ul class="text-start">
+            {% for recommendation in result.recommendations %}
+            <li>{{ recommendation }}</li>
+            {% endfor %}
+        </ul>
+    </div>
 </section>
+{% endif %}
+
+{% if message %}
+<p class="error mt-3">{{ message }}</p>
+{% endif %}
+
+<a href="/" class="btn btn-outline-secondary btn-home">
+    <i class="bi bi-house-door me-2"></i>Back to Home
+</a>
 {% endblock %}

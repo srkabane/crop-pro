@@ -1,7 +1,71 @@
-{% extends 'home.html' %}
+{% extends 'base.html' %}
+
+{% block title %}Pest & Disease Prediction{% endblock %}
+{% block background_image %}'/static/images/hero.jpg'{% endblock %}
+{% block card_width %}600px{% endblock %}
+
+{% block header_icon %}<i class="bi bi-bug me-2"></i>{% endblock %}
+{% block header_title %}Pest & Disease Prediction{% endblock %}
+
 {% block content %}
-<section class="features">
-  <h2>Pest and Disease Forecasting</h2>
-  <p>This module predicts the risks of pest attacks and crop diseases early to help farmers take proactive measures.</p>
+<h5 class="text-center mb-4 d-flex justify-content-center align-items-center gap-2" style="color:#0f5132;">
+    <i class="fas fa-seedling"></i> Select a Crop
+</h5>
+<form method="POST" novalidate>
+    <div class="form-group">
+        <i class="fas fa-leaf"></i>
+        <select name="crop" class="form-control" required>
+            <option value="">Select a crop</option>
+            <option value="apple">Apple</option>
+            <option value="banana">Banana</option>
+            <option value="blackgram">Blackgram</option>
+            <option value="chickpea">Chickpea</option>
+            <option value="coconut">Coconut</option>
+            <option value="coffee">Coffee</option>
+            <option value="cotton">Cotton</option>
+            <option value="grapes">Grapes</option>
+            <option value="jute">Jute</option>
+            <option value="kidneybeans">Kidneybeans</option>
+            <option value="lentil">Lentil</option>
+            <option value="maize">Maize</option>
+            <option value="mango">Mango</option>
+            <option value="mothbeans">Mothbeans</option>
+            <option value="mungbean">Mungbean</option>
+            <option value="muskmelon">Muskmelon</option>
+            <option value="orange">Orange</option>
+            <option value="papaya">Papaya</option>
+            <option value="pigeonpeas">Pigeonpeas</option>
+            <option value="pomegranate">Pomegranate</option>
+            <option value="rice">Rice</option>
+            <option value="watermelon">Watermelon</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-success w-100">
+        <i class="bi bi-search me-2"></i>Predict Pests & Diseases
+    </button>
+</form>
+
+{% if pests_diseases %}
+<section class="result-box mt-4">
+    <h5 style="color:#0f5132;">Potential Pests & Diseases for {{ crop }}</h5>
+    <div class="row">
+        {% for item in pests_diseases %}
+        <div class="col-md-6 text-center">
+            <h6>{{ item.name }}</h6>
+            <img src="{{ item.image }}" class="result-image" alt="Image of {{ item.name }}" />
+            <p>{{ item.description }}</p>
+        </div>
+        {% endfor %}
+    </div>
 </section>
+{% endif %}
+
+{% if message %}
+<p class="error mt-3">{{ message }}</p>
+{% endif %}
+
+<a href="/" class="btn btn-outline-secondary btn-home">
+    <i class="bi bi-house-door me-2"></i>Back to Home
+</a>
 {% endblock %}
